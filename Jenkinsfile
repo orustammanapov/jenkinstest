@@ -1,30 +1,20 @@
 pipeline {
     agent none
     stages {
-        stage("test php7.1") {
+        stage("Install Dependencies") {
+            agent {
+                docker "composer:latest"
+            }
+            steps {
+                sh "composer install"
+            }
+        }
+        stage("Run Tests") {
             agent {
                 docker "php:7.1-fpm"
             }
             steps {
-                sh "php --version"
-            }
-        }
-        stage("build") {
-            agent any
-            steps {
-                echo "Build stage test ..."
-            }
-        }
-        stage("test") {
-            agent any
-            steps {
-                echo "Test stage test ..."
-            }
-        }
-        stage("deploy") {
-            agent any
-            steps {
-                echo "Deploy stage test ..."
+                sh "./vendor/bin/dep"
             }
         }
     }
