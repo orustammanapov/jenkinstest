@@ -2,9 +2,7 @@ pipeline {
     agent none
     stages {
         stage("Install Dependencies") {
-            agent {
-                docker "composer:latest"
-            }
+            agent { dockerfile true }
             steps {
                 sh "composer install"
             }
