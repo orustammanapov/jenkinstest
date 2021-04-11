@@ -9,7 +9,7 @@ pipeline {
         }
         stage("Run Tests") {
             agent {
-                docker "php:7.1-fpm"
+                docker "php:7.4-fpm"
             }
             steps {
                 sh "./vendor/bin/dep"
