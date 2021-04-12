@@ -12,7 +12,7 @@ pipeline {
                 docker "php:7.4-fpm"
             }
             steps {
-                sh "./vendor/bin/dep"
+                sh "./vendor/bin/dep deploy"
             }
         }
     }
