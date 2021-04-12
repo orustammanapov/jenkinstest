@@ -4,7 +4,7 @@ pipeline {
         stage("Install Dependencies") {
             agent { dockerfile true }
             steps {
-                sh "composer install"
+                sh "composer install --prefer-dist"
             }
         }
         stage("Run Tests") {
